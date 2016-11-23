@@ -26,7 +26,7 @@ Kravet for at en gyroskop funktion eller accelerometer funktion kan fungerer, er
 Derudover kræver det at telefonen også har en indbygget gyroskop og accelerometer enhed. 
 
 ## Eksempler i praksis
-gyroskop kan blive brugt til at trække en enhed, i 3d.
+Gyroskop kan blive brugt til at trække en enhed, i 3d.
 man henter rotationshastigheden, enheden drejer om sig selv i 3 akser.
 ```
 var sm: SensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager;
@@ -34,7 +34,6 @@ var gyroscope: Sensor = sm.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
 sm.registerListener(this as SensorEventListener, gyroscope, SensorManager.SENSOR_DELAY_NORMAL)
 ```
 Man laver en sensor manager, som laver en sensor.type.gyroscope hvilket kan bruges i en eventListener.
-
 
 Accelerometer bruges til at trække en enheds acceleration i 3d, man kan hente accelerationen på 3 akser ligesom med gyroskopet, bare med sensor.type.accelerometer.
 ```
