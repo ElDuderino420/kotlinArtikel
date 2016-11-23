@@ -37,7 +37,9 @@ man laver en sensor manager, som laver en sensor.type.gyroscope hvilket kan brug
 
 Accelerometer bruges til at trække en enheds acceleration i 3d, man kan hente accelerationen på 3 akser ligesom med gyroskopet, bare med sensor.type.accelerometer.
 ```
+var sm: SensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager;
 var accelerometer: Sensor = sm.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+sm.registerListener(this as SensorEventListener, accelerometer, SensorManager.SENSOR_DELAY_NORMAL)
 ```
 
 ## Pitfalls and hacks
