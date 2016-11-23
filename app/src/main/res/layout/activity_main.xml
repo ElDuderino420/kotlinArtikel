@@ -16,11 +16,19 @@
         android:layout_height="wrap_content"
         android:text="Gyroscope:" />
     <TextView
-        android:id="@+id/Text"
+        android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="X: Y: Z:" />
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Max Values:" />
+    <TextView
+        android:id="@+id/maxText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="X: Y: Z:" />
 
 
 </LinearLayout>

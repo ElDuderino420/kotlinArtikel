@@ -28,37 +28,43 @@ fun Context.toast(message: String) {
 
 class MainActivity : AppCompatActivity(), SensorEventListener{
 
-    var text: TextView? = null
-    var header: TextView? = null
-
+    val max = floatArrayOf(0.0f,0.0f,0.0f)
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        header = findViewById(R.id.headerText) as TextView
-        var sm: SensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager;
-
-        /*
-        var accelerometer: Sensor = sm.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        val registerListener = sm.registerListener(this as SensorEventListener, accelerometer, SensorManager.SENSOR_DELAY_NORMAL)
-        text = findViewById(R.id.Text) as TextView
-        header?.text = "acceleration";
-        */
+        val sm = getSystemService(Context.SENSOR_SERVICE) as SensorManager;
         ///*
-        var gyroscope: Sensor = sm.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
-        sm.registerListener(this as SensorEventListener, gyroscope, SensorManager.SENSOR_DELAY_NORMAL)
-        text = findViewById(R.id.Text) as TextView
-        header?.text = "Gyroscope";
+        val accelerometer = sm.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        sm.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL)
+        headerText.text = "acceleration";
         //*/
+        /*
+        val gyroscope = sm.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
+        sm.registerListener(this, gyroscope, SensorManager.SENSOR_DELAY_NORMAL)
+        headerText.text = "Gyroscope";
+        */
     }
     override fun onSensorChanged(sensorEvent: SensorEvent) {
 
-        text?.text = "X: " + sensorEvent.values[0] +
-                "\nY: " + sensorEvent.values[1] +
-                "\nZ: " + sensorEvent.values[2];
+        text.text = """
+                |X: ${sensorEvent.values[0]}
+                |Y: ${sensorEvent.values[1]}
+                |Z: ${sensorEvent.values[2]}
+                """.trimMargin()
 
+        for (index in sensorEvent.values.indices){
+            if(sensorEvent.values[index]>max[index]){
+                max[index]=sensorEvent.values[index]
+            }
+        }
 
+        maxText.text = """
+                |X: ${max[0]}
+                |Y: ${max[1]}
+                |Z: ${max[2]}
+                """.trimMargin()
     }
 
     override fun onAccuracyChanged(sensor: Sensor, i: Int) {
