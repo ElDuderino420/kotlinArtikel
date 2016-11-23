@@ -33,7 +33,8 @@ var sm: SensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManage
 var gyroscope: Sensor = sm.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
 sm.registerListener(this as SensorEventListener, gyroscope, SensorManager.SENSOR_DELAY_NORMAL)
 ```
-man laver en sensor manager, som laver en sensor.type.gyroscope hvilket kan bruges i en eventListener.
+Man laver en sensor manager, som laver en sensor.type.gyroscope hvilket kan bruges i en eventListener.
+
 
 Accelerometer bruges til at trække en enheds acceleration i 3d, man kan hente accelerationen på 3 akser ligesom med gyroskopet, bare med sensor.type.accelerometer.
 ```
